@@ -24,8 +24,3 @@ class DiceCup {
         this.dice = [0,0,0,0,0];
     }
 }
-
-// ===== TEST CODE ===== //
-MyGame = new DiceCup();
-MyGame.rollDice();
-console.log(MyGame);
