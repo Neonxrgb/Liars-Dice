@@ -27,3 +27,10 @@
   border-radius: 50%;
   background: #111;
 }
+
+button {
+  padding: 14px 28px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+}
