@@ -31,16 +31,36 @@ const dieIds = ["die1", "die2", "die3", "die4", "die5"];
 // ----- RENDERER ----- ///
 
 function render() {
-    dieIds.forEach((id, index) => {
+  dieIds.forEach((id, index) => {
     const dieElement = document.getElementById(id);
 
     if (index < cup.dice.length) {
-        dieElement.textContent = cup.dice[index];
-        dieElement.style.display = "block";
+      const value = cup.dice[index];
+
+      dieElement.innerHTML = "";
+      dieElement.style.display = "";
+
+      const dotPositions = {
+        1: [[1, 1]],
+        2: [[0, 0], [2, 2]],
+        3: [[0, 0], [1, 1], [2, 2]],
+        4: [[0, 0], [0, 2], [2, 0], [2, 2]],
+        5: [[0, 0], [0, 2], [1, 1], [2, 0], [2, 2]],
+        6: [[0, 0], [0, 2], [1, 0], [1, 2], [2, 0], [2, 2]]
+      };
+
+      // do not understand that part fully
+      dotPositions[value].forEach(([row, col]) => {
+        const dot = document.createElement("span");
+        dot.className = "pip";
+        dot.style.gridRow = row + 1;
+        dot.style.gridColumn = col + 1;
+        dieElement.appendChild(dot);
+      });
     } else {
-        dieElement.style.display = "none";
+      dieElement.style.display = "none";
     }
-    });
+  });
 }
 
 render();
